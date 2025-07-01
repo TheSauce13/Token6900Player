@@ -10,10 +10,21 @@ from telegram.ext import (
     CommandHandler,
     ContextTypes
 )
+import os
+
+# ✅ Load from .env if present
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
+# ✅ Read BOT_TOKEN from environment
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("❌ BOT_TOKEN is not set in environment variables.")
 
 # ✅ CONFIGURATION
-BOT_TOKEN = "7679202004:AAF5yZEUYWVHD8GgY5XbScPOINJgdwfxiGo"
-
 MINI_APP_URL = "https://thesauce13.github.io/Miniplayer/"
 BOT_LINK = "https://t.me/Token6900PlayerBot"
 
@@ -28,10 +39,9 @@ VIDEO_URL = "https://token6900.com/assets/images/banner-vdo.mp4"
 # ✅ /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat = update.effective_chat
-    user = update.effective_user
 
     if chat.type == "private":
-        # 1️⃣ Set the persistent menu button
+        # 1️⃣ Set persistent menu button
         await context.bot.set_chat_menu_button(
             chat_id=chat.id,
             menu_button=MenuButtonWebApp(
@@ -46,7 +56,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             caption="🐬 Welcome to Token 6900 🎵"
         )
 
-        # 3️⃣ Send the main info card
+        # 3️⃣ Send info card
         await update.message.reply_text(
             text=(
                 f"🌐  W: {WEBSITE_URL}\n"
@@ -54,6 +64,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"📸  I: {INSTAGRAM_URL}"
             )
         )
+
     else:
         # Group chat – send inline button linking to bot
         keyboard = [
@@ -85,7 +96,7 @@ async def instagram(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def dolphin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("🐬 Token 6900 🐬")
 
-# ✅ /links command - All socials in one message
+# ✅ /links command
 async def links(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         text=(
