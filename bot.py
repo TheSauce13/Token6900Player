@@ -25,7 +25,7 @@ if not BOT_TOKEN:
     raise ValueError("❌ BOT_TOKEN is not set in environment variables.")
 
 # ✅ CONFIGURATION
-MINI_APP_URL = "https://thesauce13.github.io/Miniplayer/"
+MINI_APP_URL = "https://thesauce13.github.io/Token6900Player/"
 BOT_LINK = "https://t.me/Token6900PlayerBot"
 
 WEBSITE_URL = "https://token6900.com/"
