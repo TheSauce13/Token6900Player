@@ -28,7 +28,7 @@ if not BOT_TOKEN:
 MINI_APP_URL = "https://thesauce13.github.io/Token6900Player/"
 BOT_LINK = "https://t.me/Token6900PlayerBot"
 
-WEBSITE_URL = "https://token6900.com/"
+WEBSITE_URL = "https://bitesly.io/b_Token6900_TG"
 X_URL = "https://x.com/token_6900"
 INSTAGRAM_URL = "https://instagram.com/token_6900"
 
